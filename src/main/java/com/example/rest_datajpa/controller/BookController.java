@@ -2,6 +2,7 @@ package com.example.rest_datajpa.controller;
 
 import com.example.rest_datajpa.entities.Book;
 import com.example.rest_datajpa.repository.BookRepository;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -102,7 +103,7 @@ public class BookController {
 
 
     // borrar un libro en base de datos
-
+    @Hidden
     @DeleteMapping("/api/bookst/{id}")
     public ResponseEntity<Book> delete(@PathVariable Long id){
         if (!bookRepository.existsById(id)){
@@ -114,6 +115,7 @@ public class BookController {
         return ResponseEntity.noContent().build();
 
     }
+    @Hidden
     @DeleteMapping("/api/bookst")
     public ResponseEntity<Book> deleteAll(){
         log.info("REST Request for delete all bocks");
